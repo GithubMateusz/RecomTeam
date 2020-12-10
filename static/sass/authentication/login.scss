@@ -1,0 +1,21 @@
+.app-login-content {
+  margin-bottom: 20px;
+
+  .btn-login-g-plus {
+    color: #fff;
+    background-color: #dd4b39;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .btn-login-fb {
+    color: #fff;
+    background-color: #3b5998;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}

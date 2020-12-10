@@ -1,0 +1,54 @@
+@import "var";
+
+body {
+  background-color: $app-background-color;
+  color: $app-text-color;
+}
+
+.modal-open .modal {
+  height: auto;
+}
+
+.modal-content {
+  background-color: $app-background-color;
+  color: $app-text-color;
+
+  .modal-header {
+    position: relative;
+    border-bottom: 1px solid black;
+
+    .modal-title {
+    }
+
+    .close {
+      position: absolute;
+      top: -2rem;
+      right: -2rem;
+      opacity: 0.8;
+      color: white;
+      font-size: 2.5rem;
+      text-shadow: none;
+
+      :hover {
+        color: white;
+        opacity: 1.0;
+      }
+    }
+  }
+}
+
+.app-header-menu {
+  .nav {
+    .nav-item {
+      padding: 0 5px;
+    }
+  }
+}
+
+.app-alert-container {
+  position: absolute;
+  max-width: 400px;
+  top: 80px;
+  right: 20px;
+  z-index: 10000;
+}

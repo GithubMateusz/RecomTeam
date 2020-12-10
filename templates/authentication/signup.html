@@ -1,0 +1,18 @@
+<!-- templates/auth/signup.html -->
+
+{% extends 'base_layout.html' %}
+
+
+{% block title %} Sign up {% endblock %}
+
+
+{% block content %}
+    <div class="app-signup-content">
+        <form method="post" class="form-signup">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="save btn btn-dark">Sign up</button>
+            <a href="{% url 'home' %}">Home</a>
+        </form>
+    </div>
+{% endblock %}
