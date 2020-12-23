@@ -62,11 +62,10 @@
     </nav>
 {% endblock %}
 
-<div class="container-fluid">
-    {% block content %}
+{% block content %}
 
-    {% endblock %}
-</div>
+{% endblock %}
+
 
 {% block footer %}
     {% if user.is_authenticated %}

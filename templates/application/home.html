@@ -1,10 +1,23 @@
-<!-- templates/application/home.html -->
-
 {% extends 'base_layout.html' %}
+{% load static %}
+<!-- templates/application/home.html -->
 
 
 {% block title %} Home page {% endblock %}
 
 {% block content %}
+    <div class="container home-container">
+        <div class="row">
+            <div class="col-md-4 col-sm-1  justify-content-center  d-flex align-items-center">
+                <img class="game-logo" src="{% static 'img/league_of_legends_logo.png' %}">
+            </div>
+            <div class="col-md-4 col-sm-1  justify-content-center  d-flex align-items-center">
+                <img class="game-logo" src="{% static 'img/valorant_logo.png' %}">
+            </div>
 
+            <div class="col-md-4 col-sm-1  justify-content-center  d-flex align-items-center">
+                <img class="game-logo" src="{% static 'img/fortnite_logo.png' %}">
+            </div>
+        </div>
+    </div>
 {% endblock %}

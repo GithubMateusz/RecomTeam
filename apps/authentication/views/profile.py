@@ -11,7 +11,7 @@ class ProfileView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = ProfileForm
     success_url = reverse_lazy('home')
-    template_name = 'commons/../../../templates/authentication/profile.html'
+    template_name = 'authentication/profile.html'
 
     def get(self, request, **kwargs):
         self.object = User.objects.get(username=self.request.user)
