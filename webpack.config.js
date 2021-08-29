@@ -1,12 +1,14 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+const WebpackConcatPlugin = require('webpack-concat-files-plugin');
 
 module.exports = {
+    context: __dirname,
     entry: './static/js/app.js',
-    mode: 'development',
     output: {
-        filename: 'app.js',
-        path: path.resolve(__dirname, 'static/dist/')
+        filename: "app.js?[hash]",
+        path: path.resolve(__dirname, 'static/bundles/'),
+        publicPath: "bundles/"
     },
     module: {
         rules: [
@@ -32,7 +34,17 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: '/app.css',
+            filename: '/app.css?[hash]',
         }),
+        new WebpackConcatPlugin({
+            bundles: [
+                {
+                    dest: './dist/app.js',
+                    src: './static/js/**/*.js',
+                },
+
+            ],
+
+        })
     ]
 }

@@ -87,6 +87,8 @@ DATABASES = {
     }
 }
 
+AUTH_USER_MODEL = 'authentication.UserProfile'
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -103,9 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.google.GoogleOAuth2',
+    'apps.authentication.backends.EmailBackend'
 ]
 
 MESSAGE_TAGS = {
@@ -116,7 +118,7 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pl'
 
 TIME_ZONE = 'UTC'
 

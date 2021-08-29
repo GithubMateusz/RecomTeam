@@ -1,0 +1,52 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block title %}  {% endblock %}
+
+{% block content %}
+    <div class="container referred-players-container">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                {% if game == 'league-of-legends' %}
+                    <img class="game-logo" src="{% static 'img/league_of_legends_logo.png' %}">
+                {% elif game == 'valorant' %}
+                    <img class="game-logo" src="{% static 'img/valorant_logo.png' %}">
+                {% elif game == 'fortnite' %}
+                    <img class="game-logo" src="{% static 'img/fortnite_logo.png' %}">
+                {% endif %}
+            </div>
+            <div class="col-md-4 offset-md-4 col-sm-12 justify-content-center">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ your_statistics.account_name }}</h5>
+                        <p class="card-text">
+                            <b>Twoje punkty: {{ your_statistics.points }}</b>
+                        </p>
+                        <form class="form-update" method="post">
+                            {% csrf_token %}
+                            <button type=submit class="btn btn-success">
+                                Aktualizuj punkty
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for player_statistics in statistics_of_other_players %}
+                <div class="col-md-4 col-sm-12 " id="playerStatisticsId{{ player_statistics.uuid }}">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ player_statistics.account_name }}</h5>
+                            <p class="card-text">
+                                <b>Punkty: {{ player_statistics.points }}</b>
+                            </p>
+                            <a class="btn btn-primary invite-player-button" id="{{ player_statistics.uuid }}">Zaproś
+                                gracza do grupy</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

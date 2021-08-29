@@ -33,5 +33,8 @@ class Config:
     SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
     SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
 
+    RIOT_API_KEY = environ.get("RIOT_API_KEY")
+    FORTNITE_API_KEY = environ.get("FORTNITE_API_KEY")
+
 
 app_config = Config()

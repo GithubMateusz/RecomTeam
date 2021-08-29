@@ -12,120 +12,70 @@
     <link rel="stylesheet" href="{% static 'libraries/css/brands.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'libraries/css/solid.min.css' %}"/>
 
-    <link rel="stylesheet" href="{% static 'dist/app.css' %}"/>
+    <link rel="stylesheet" href="{% static 'bundles/app.css' %}"/>
     <title>{% block title %}{% endblock %}</title>
 </head>
 
 <body>
 {% block header %}
-    <nav class="navbar navbar-dark bg-dark app-header-menu">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <ul class="nav justify-content-end">
-            {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <p>{{ user.login }}</p>
-                </li>
-                <li class="nav-item">
-                    <p>{{ user.email }}</p>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'profile' %}">
-                        <button type="button" class="btn btn-outline-light">
-                            Profile
-                        </button>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'logout' %}">
-                        <button type="button" class="btn btn-outline-secondary">
-                            Logout
-                        </button>
-                    </a>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <a href="{% url 'login' %}">
-                        <button type="button" class="btn btn-outline-light">
-                            Sign in
-                        </button>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'signup' %}">
-                        <button type="button" class="btn btn-outline-light">
-                            Sign up
-                        </button>
-                    </a>
-                </li>
-            {% endif %}
-        </ul>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <a class="navbar-brand" href="{% url 'home' %}">RecomTeam</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'groups' %}">Grupy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'invitations' %}">Zaproszenia</a>
+                    </li>
+                {% endif %}
+            </ul>
+            <ul class="nav navbar-nav navbar-right ">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">{{ user.email }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile' %}">Profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Wyloguj się</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">
+                            <i class="fa fa-user"></i> Zaloguj się
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'signup' %}">
+                            <i class="fa fa-user-plus"></i> Zarejestruj się
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
     </nav>
 {% endblock %}
 
-{% block content %}
+<div class="container-page">
+    {% block content %}
 
-{% endblock %}
+    {% endblock %}
+</div>
 
 
 {% block footer %}
-    {% if user.is_authenticated %}
-
-    {% else %}
-        <div class="modal fade" id="signInModal" tabindex="" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Sign in</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        {{ login_form }}
-
-                    </div>
-                </div>
-            </div>
+    <footer class="footer mt-auto py-3 bg-dark">
+        <div class="container">
+            <span class="text-muted">Copyright ©2021</span>
         </div>
-
-        <div class="modal fade" id="signUpModal" tabindex="" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Sign up</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                       aria-describedby="emailHelp">
-                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with
-                                    anyone
-                                    else.</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="password">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Retry password</label>
-                                <input type="password" class="form-control" id="passwordRetry">
-                            </div>
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Register</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endif %}
+    </footer>
 
     <div class="app-alert-container">
         {% for message in messages %}
@@ -145,7 +95,7 @@
 <script src="{% static 'libraries/js/popper.min.js' %}"></script>
 <script src="{% static 'libraries/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'libraries/js/fontawesome.min.js' %}"></script>
-<script src="{% static 'dist/app.js' %}"></script>
+<script src="{% static 'bundles/app.js' %}"></script>
 </body>
 
 </html>

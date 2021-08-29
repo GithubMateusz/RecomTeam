@@ -3,8 +3,10 @@ from django.views.generic import View
 
 
 class HomeView(View):
+    template_name = 'application/home.html'
+
     def get(self, request, *args, **kwargs):
-        return render(request, 'application/home.html')
+        return render(request, self.template_name)
 
     def post(self, request, *args, **kwargs):
         pass

@@ -1,10 +1,10 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
 
-from .views.acitvate_account import ActivateAccount
-from .views.login import LoginView
-from .views.profile import ProfileView
-from .views.signup import SignupView
+from .views.acitvate_account_view import ActivateAccount
+from .views.login_view import LoginView
+from .views.profile_view import ProfileView
+from .views.signup_view import SignupView
 
 urlpatterns = [
     path('logout', auth_views.LogoutView.as_view(), name='logout'),

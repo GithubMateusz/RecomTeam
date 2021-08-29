@@ -2,7 +2,7 @@
 venv
 node_modules
 package-lock.json
-disc
+bundles
 /static/dist/
 .idea
 __pycache__

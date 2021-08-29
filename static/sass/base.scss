@@ -1,8 +1,21 @@
 @import "var";
 
 body {
-  background-color: $app-background-color;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background: -webkit-linear-gradient($app-background-color-light, $app-background-color);
+  background: -moz-linear-gradient($app-background-color-light, $app-background-color);
+  background: -ms-linear-gradient($app-background-color-light, $app-background-color);
+  background: -o-linear-gradient($app-background-color-light, $app-background-color);
+  background: linear-gradient($app-background-color-light, $app-background-color);
   color: $app-text-color;
+  background-attachment: fixed;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 .modal-open .modal {
@@ -37,12 +50,25 @@ body {
   }
 }
 
-.app-header-menu {
-  .nav {
-    .nav-item {
-      padding: 0 5px;
-    }
-  }
+#header {
+  background-color: transparent;
+  background-position: center bottom;
+}
+
+h1 {
+  color: white;
+  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+  0px 8px 13px rgba(0, 0, 0, 0.1),
+  0px 18px 23px rgba(0, 0, 0, 0.2);
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.navbar-brand {
+  color: white;
+  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+  0px 8px 13px rgba(0, 0, 0, 0.1),
+  0px 18px 23px rgba(0, 0, 0, 0.2);
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .app-alert-container {
@@ -51,4 +77,17 @@ body {
   top: 80px;
   right: 20px;
   z-index: 10000;
+}
+
+.container-page {
+  overflow: auto;
+  padding-bottom: 60px;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.footer {
+  width: 100%;
+  height: 56px;
 }

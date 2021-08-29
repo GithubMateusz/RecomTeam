@@ -8,15 +8,20 @@
 {% block content %}
     <div class="container home-container">
         <div class="row">
-            <div class="col-md-4 col-sm-1  justify-content-center  d-flex align-items-center">
-                <img class="game-logo" src="{% static 'img/league_of_legends_logo.png' %}">
+            <div class="col-md-6 col-sm-1  justify-content-center  d-flex align-items-center">
+                <a href="{% url 'get_account' game='league-of-legends' %}">
+                    <img class="game-logo" src="{% static 'img/league_of_legends_logo.png' %}">
+                </a>
             </div>
-            <div class="col-md-4 col-sm-1  justify-content-center  d-flex align-items-center">
-                <img class="game-logo" src="{% static 'img/valorant_logo.png' %}">
-            </div>
-
-            <div class="col-md-4 col-sm-1  justify-content-center  d-flex align-items-center">
-                <img class="game-logo" src="{% static 'img/fortnite_logo.png' %}">
+            {#            <div class="col-md-6 col-sm-1  justify-content-center  d-flex align-items-center">#}
+            {#                <a href="{% url 'get_account' game='valorant' %}">#}
+            {#                    <img class="game-logo" src="{% static 'img/valorant_logo.png' %}">#}
+            {#                </a>#}
+            {#            </div>#}
+            <div class="col-md-6 col-sm-1  justify-content-center  d-flex align-items-center">
+                <a href="{% url 'get_account' game='fortnite' %}">
+                    <img class="game-logo" src="{% static 'img/fortnite_logo.png' %}">
+                </a>
             </div>
         </div>
     </div>

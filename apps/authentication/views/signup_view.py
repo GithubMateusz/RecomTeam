@@ -4,19 +4,16 @@ from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
-from django.views import View
+from django.views.generic import CreateView
 
-from apps.authentication.forms.auth_forms import SignupForm
+from apps.authentication.forms import SignupForm
 from apps.authentication.tokens import account_activation_token
 from django.conf import settings
 
-class SignupView(View):
+
+class SignupView(CreateView):
     form_class = SignupForm
     template_name = 'authentication/signup.html'
-
-    def get(self, request, *args, **kwargs):
-        form = self.form_class()
-        return render(request, self.template_name, {'form': form})
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
@@ -39,9 +36,9 @@ class SignupView(View):
                 messages.success(request, 'Please Confirm your email to complete registration.')
             else:
                 user.save()
-                user.profile.email_confirmed = True
+                user.email_confirmed = True
                 user.save()
-                messages.success(request, 'You can login now.')
+                messages.success(request, 'Możesz się teraz zalogować.')
 
             return redirect('login')
 
